@@ -12,6 +12,7 @@ services:
       - /docker/letsencrypt-docker-nginx/src/production/dh-param/dhparam-2048.pem:/etc/ssl/certs/dhparam-2048.pem
       - /docker-volumes/etc/letsencrypt/live/api-staging.joesweeny.co.uk/fullchain.pem:/etc/letsencrypt/live/api-staging.joesweeny.co.uk/fullchain.pem
       - /docker-volumes/etc/letsencrypt/live/api-staging.joesweeny.co.uk/privkey.pem:/etc/letsencrypt/live/api-staging.joesweeny.co.uk/privkey.pem
+      - /docker-volumes/data/letsencrypt:/data/letsencrypt
     networks:
       - proxynet
 
