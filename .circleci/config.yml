@@ -11,9 +11,6 @@ jobs:
           name: Deploy to Staging
           command: |
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
-              docker login -u ${DOCKER_HUB_USERNAME} -p ${DOCKER_HUB_PASSWORD}
-              docker tag "${DOCKER_IMAGE}:latest" "${DOCKER_HUB_REPOSITORY}/${DOCKER_IMAGE}_staging:latest"
-              docker push "${DOCKER_HUB_REPOSITORY}/${DOCKER_IMAGE}_staging:latest"
               scp docker-compose.staging.yml root@${STAGING_SERVER}:~/nginx-proxy
               ssh root@${STAGING_SERVER} "docker-compose -f ./nginx-proxy/docker-compose.staging.yml pull web \
               && docker-compose -f ./nginx-proxy/docker-compose.staging.yml up -d"
