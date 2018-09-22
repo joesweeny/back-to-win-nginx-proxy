@@ -1,7 +1,7 @@
 version: 2
 jobs:
   build:
-    working_directory: ~/gameplatform
+    working_directory: ~/back-to-win
     machine:
       image: circleci/classic:201711-01
 
@@ -11,6 +11,6 @@ jobs:
           name: Deploy to Staging
           command: |
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
-              scp ./staging/docker-compose.staging.yml root@${STAGING_SERVER}:~/nginx-proxy
+              scp ./staging/ root@${STAGING_SERVER}:~/nginx-proxy
               ssh root@${STAGING_SERVER} "docker-compose -f ./nginx-proxy/docker-compose.staging.yml up -d"
             fi

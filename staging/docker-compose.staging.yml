@@ -18,4 +18,4 @@ services:
 
 networks:
   proxynet:
-    name: gameplatform_network
+    name: back_to_win_api_network
