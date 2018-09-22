@@ -11,6 +11,6 @@ jobs:
           name: Deploy to Staging
           command: |
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
-              scp ./staging/ root@${STAGING_SERVER}:~/nginx-proxy
+              scp ./staging root@${STAGING_SERVER}:~/nginx-proxy
               ssh root@${STAGING_SERVER} "docker-compose -f ./nginx-proxy/docker-compose.staging.yml up -d"
             fi
